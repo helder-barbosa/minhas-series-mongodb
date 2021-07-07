@@ -2,6 +2,7 @@ const path = require('path')
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
+const pages = require('./routes/pages')
 const port = process.env.PORT || 3000
 const mongo = process.env.MONGODB || 'mongodb://localhost/minhas-series'
 
@@ -13,9 +14,9 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static('public'))
 
 app.set('views', path.join(__dirname, 'views'))
-app.set('views engine', 'ejs')
+app.set('view engine', 'ejs')
 
-app.get('/', (req, res) => res.send('OK'))
+app.use('/', pages)
 
 mongoose
   .connect(mongo, { useNewUrlParser: true, useUnifiedTopology: true })
