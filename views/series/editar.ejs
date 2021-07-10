@@ -6,20 +6,24 @@
       <div class="row">
         <div class="col-lg-8 mx-auto">
           <form method="POST">
-            <h2>Cadastrar Nova Série</h2>
+            <h2>Editar Série</h2>
             <hr>
             <div class="form-group">
               <label for="name">Nome da Série</label>
-              <input type="text" class="form-control" name="name" id="name" aria-describedby="nameHelp"
-                placeholder="Informe Nome da Série">
+              <input value="<%= serie.name %>" type="text" class="form-control" name="name" id="name"
+                aria-describedby="nameHelp" placeholder="Informe Nome da Série">
               <small id="nameHelp" class="form-text text-muted">Nome da série a cadastrar.</small>
             </div>
             <div class="form-group">
               <label for="status">Situação :</label>
               <select class="form-control" id="status" name="status">
-                <option value="to-watch">Vou Assistir</option>
-                <option value="watching">Estou Assistindo</option>
-                <option value="watched">Ja Assisti</option>
+                <% labels.forEach( label=> { %>
+
+                  <option value="<%= label.id %>" <% if(label.id===serie.status) { %> selected="selected" <% } %>>
+                      <%= label.name %>
+                  </option>
+                  <% }) %>
+
               </select>
             </div>
             <button class="btn btn-primary">Salvar</button>
