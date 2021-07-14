@@ -1,0 +1,32 @@
+<%- include('../partials/header') %>
+
+
+  <section id="about">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <form class="my-2" method="POST">
+            <h2>
+              <%= serie.name %>
+            </h2>
+            <hr>
+            <div class="form-group">
+              Nome da serie : <%= serie.name %> <br>
+            </div>
+            <textarea class="form-control my-1" name="comentario"></textarea>
+            <input class="btn btn-primary" type="submit" value="Adicionar Comentario">
+          </form>
+          <hr>
+          <% serie.comments.forEach( c=> { %>
+            <div class="card my-1">
+              <%= c %>
+            </div>
+            <% }) %>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <%- include('../partials/footer') %>
